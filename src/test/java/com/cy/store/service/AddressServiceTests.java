@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 /**
  * @ClassName AddressServiceTests
  * @Description TODO
@@ -28,6 +30,12 @@ public class AddressServiceTests {
 
         addressService.addNewAddress(14,"t1",address);
 
+    }
+
+    @Test
+    public void findListByUid(){
+        List<Address> listByUid = addressService.findListByUid(14);
+        System.out.println(listByUid);
     }
 
 }

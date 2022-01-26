@@ -1,5 +1,7 @@
 package com.cy.store.service;
 
+import com.cy.store.entity.Address;
+
 import java.util.List;
 import java.util.Map;
 
@@ -28,4 +30,6 @@ public interface IDistrictService {
      * @return: java.lang.String
      **/
     String findByName(String code);
+
+
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassName AddressServiceImpl
@@ -73,5 +74,21 @@ public class AddressServiceImpl implements IAddressService {
         if (insert != 1){
             throw new InsertException("添加收货地址时发生异常");
         }
+    }
+
+    /**
+     * @Description:通过uid获取收货地址
+     * @Author: xiaolong
+     * @Date: 2022/1/26 23:15
+     * @param uid: 当前用户的uid
+     * @return: java.util.List<com.cy.store.entity.Address>
+     **/
+    @Override
+    public List<Address> findListByUid(Integer uid) {
+        List<Address> addresses = addressMapper.selectList(new QueryWrapper<Address>()
+                .eq("uid", uid)
+                .orderByDesc("is_Default")
+                .orderByDesc("created_time"));
+        return addresses;
     }
 }

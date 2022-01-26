@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @ClassName AddressController
@@ -30,5 +31,12 @@ public class AddressController extends BaseController{
         String usernameFromSession = getUsernameFromSession(session);
         addressService.addNewAddress(uidFromSession,usernameFromSession,address);
         return new JsonResult<>(OK,"添加成功");
+    }
+
+    @RequestMapping("list")
+    public JsonResult<List<Address>> addressList(HttpSession session){
+        Integer uid = getUidFromSession(session);
+        List<Address> listByUid = addressService.findListByUid(uid);
+        return new JsonResult<>(OK,"获取成功",listByUid);
     }
 }

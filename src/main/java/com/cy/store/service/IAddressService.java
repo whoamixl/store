@@ -2,6 +2,8 @@ package com.cy.store.service;
 
 import com.cy.store.entity.Address;
 
+import java.util.List;
+
 /**
  * @ClassName IAddressService
  * @Description 收获地址业务接口层
@@ -20,4 +22,13 @@ public interface IAddressService {
      * @return: void
      **/
     void addNewAddress(Integer uid, String username, Address address);
+
+    /**
+     * @Description:通过uid获取收货地址
+     * @Author: xiaolong
+     * @Date: 2022/1/26 23:15
+     * @param uid: 当前用户的uid
+     * @return: java.util.List<com.cy.store.entity.Address>
+     **/
+    List<Address> findListByUid(Integer uid);
 }

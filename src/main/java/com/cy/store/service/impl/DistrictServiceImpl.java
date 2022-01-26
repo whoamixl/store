@@ -1,7 +1,9 @@
 package com.cy.store.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.cy.store.entity.Address;
 import com.cy.store.entity.District;
+import com.cy.store.mapper.AddressMapper;
 import com.cy.store.mapper.DistrictMapper;
 import com.cy.store.service.IDistrictService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ import java.util.Map;
 public class DistrictServiceImpl implements IDistrictService {
 
     @Autowired
+    private AddressMapper addressMapper;
+
+    @Autowired
     private DistrictMapper districtMapper;
 
     /**
@@ -38,10 +43,17 @@ public class DistrictServiceImpl implements IDistrictService {
                 .orderByAsc("code"));
         return districts;
     }
-
+    /**
+     * @Description:根据code查询名字
+     * @Author: xiaolong
+     * @Date: 2022/1/25 22:47
+     * @param code: 行政code
+     * @return: java.lang.String
+     **/
     @Override
     public String findByName(String code) {
         String data = districtMapper.findByName(code);
         return data;
     }
+
 }
